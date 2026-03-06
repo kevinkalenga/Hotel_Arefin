@@ -1,4 +1,4 @@
-@include('nav')
+@include('admin.nav')
 
 
 <h3>Settings</h3>

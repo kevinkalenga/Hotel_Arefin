@@ -15,21 +15,16 @@ class WebsiteController extends Controller
     {
         return view('home');
     }
-    /* -------------------- Page de dashboard -------------------- */
-    public function dashboard_user()
+
+
+    /* -------------------- Dashboard -------------------- */
+    public function dashboard()
     {
-        return view('dashboard_user');
+        return view('dashboard');
     }
-    /* -------------------- Page de dashboard Admin -------------------- */
-    public function dashboard_admin()
-    {
-        return view('dashboard_admin');
-    }
-    /* -------------------- Page de Settings -------------------- */
-    public function settings()
-    {
-        return view('settings');
-    }
+    
+    
+    
     /* -------------------- Page mot de connexion -------------------- */
     public function login()
     {
@@ -45,14 +40,8 @@ class WebsiteController extends Controller
         ];
         
         // if the credential match
-        if(Auth::attempt($credentials)) {
-            if(Auth::guard('web')->user()->role == 1) {
-               return redirect()->route('dashboard_admin');
-            } else {
-                return redirect()->route('dashboard_user');
-            }
-            
-
+        if(Auth::guard('web')->attempt($credentials)) {
+             return redirect()->route('dashboard');
         } else {
             return redirect()->route('login');
         }

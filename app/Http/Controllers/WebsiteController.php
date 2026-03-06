@@ -55,9 +55,18 @@ class WebsiteController extends Controller
 
     }
 
-    public function registration_verify()
+    public function registration_verify($token, $email)
     {
+      $user = User::where('token', $token)->where('email', $email)->first();
+        if(!$user) {
+          return redirect()->route('login');
+        }
 
+        $user->status = 'Active';
+        $user->token = '';
+        $user->update();
+
+        echo 'Registration verification is successful';
     }
     
     

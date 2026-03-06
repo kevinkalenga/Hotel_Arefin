@@ -15,13 +15,12 @@ class Admin
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     
+      public function handle(Request $request, Closure $next): Response
+      {
+         if (!Auth::guard('admin')->check()) {
+             return redirect()->route('admin_login');
+         }
 
-       public function handle(Request $request, Closure $next): Response
-       {
-           if (Auth::check() && (Auth::user()->role == 1)) {
-               return $next($request);
-           }
-
-           return redirect()->route('home');
-       }
+         return $next($request);
+      }
 }

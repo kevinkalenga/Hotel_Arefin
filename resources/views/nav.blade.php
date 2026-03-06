@@ -4,5 +4,6 @@
   <a href="{{route('registration')}}">Registration</a> 
 @else 
   <a href="{{route('dashboard')}}">Dashboard</a> -  
+  <a href="{{route('settings')}}">Settings</a> -  
   <a href="{{route('logout')}}">Logout</a> 
 @endif

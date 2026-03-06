@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebsiteController::class, 'index'])->name('home');
 Route::get('/dashboard', [WebsiteController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+Route::get('/settings', [WebsiteController::class, 'settings'])->name('settings')->middleware('auth');
+
 Route::get('/login', [WebsiteController::class, 'login'])->name('login');
 Route::post('/login-submit', [WebsiteController::class, 'login_submit'])->name('login_submit');
 Route::get('/logout', [WebsiteController::class, 'logout'])->name('logout');

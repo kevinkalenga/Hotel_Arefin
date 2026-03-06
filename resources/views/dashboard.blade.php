@@ -2,4 +2,4 @@
 
 
 <h3>Dashboard</h3>
-<p>Hi Kevin, Welcome to dashboard!</p>
+<p>Hi {{Auth::guard('web')->user()->name}}, Welcome to dashboard!</p>

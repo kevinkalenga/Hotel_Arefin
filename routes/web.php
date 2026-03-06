@@ -4,8 +4,9 @@ use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebsiteController::class, 'index'])->name('home');
-Route::get('/dashboard', [WebsiteController::class, 'dashboard'])->name('dashboard')->middleware('auth');
-Route::get('/settings', [WebsiteController::class, 'settings'])->name('settings')->middleware('auth');
+Route::get('/dashboard-user', [WebsiteController::class, 'dashboard_user'])->name('dashboard_user')->middleware('auth');
+Route::get('/dashboard-admin', [WebsiteController::class, 'dashboard_admin'])->name('dashboard_admin')->middleware('admin');
+Route::get('/settings', [WebsiteController::class, 'settings'])->name('settings')->middleware('admin');
 
 Route::get('/login', [WebsiteController::class, 'login'])->name('login');
 Route::post('/login-submit', [WebsiteController::class, 'login_submit'])->name('login_submit');

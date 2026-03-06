@@ -99,6 +99,37 @@ class WebsiteController extends Controller
     {
         return view('forget_password');
     }
+    public function forget_password_submit(Request $request)
+    {
+        $token = hash('sha256', time());
+
+        $user = User::where('email', $request->email)->first();
+
+        if(!$user) {
+
+        }
+
+        $user->token = $token;
+        $user->update();
+        // Créer le lien de réinitialisation
+        $reset_link = url('reset-password/' . $token . '/' . $request->email);
+
+         // Message et sujet de l'email
+        $subject = "Password Reset Request";
+        $message = "To reset your password, please click on the link below:<br>";
+        $message .= "<a href='" . $reset_link . "'>Click Here</a>";
+
+         // Envoyer l'email
+        \Mail::to($request->email)->send(new Websitemail($subject, $message));
+        
+        // $user = new User();
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->password = Hash::make($request->password);
+        // $user->status = 'Pending';
+        // $user->token = $token;
+        // $user->save();
+    }
 
 
 }

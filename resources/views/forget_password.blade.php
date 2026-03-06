@@ -3,7 +3,8 @@
 
 <h3>Forget Password</h3>
 
-<form action="" method="post">
+<form action="{{route('forget_password_submit')}}" method="post">
+   @csrf
    <div>Email Address</div>
    <div>
        <input type="email" name="email">

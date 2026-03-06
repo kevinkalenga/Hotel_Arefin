@@ -12,3 +12,4 @@ Route::get('/registration', [WebsiteController::class, 'registration'])->name('r
 Route::post('/registration-submit', [WebsiteController::class, 'registration_submit'])->name('registration_submit');
 Route::get('/registration/verify/{token}/{email}', [WebsiteController::class, 'registration_verify']);
 Route::get('/forget-password', [WebsiteController::class, 'forget_password'])->name('forget_password');
+Route::post('/forget-password-submit', [WebsiteController::class, 'forget_password_submit'])->name('forget_password_submit');
